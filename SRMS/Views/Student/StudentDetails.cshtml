@@ -1,0 +1,56 @@
+﻿@model SRMS.Models.StudentModel
+
+@{
+    ViewData["Title"] = "StudentDetails";
+}
+<h1>Student Details</h1>
+
+<h4>Student Model</h4>
+<hr />
+<div class="container mt-4">
+    <h1 class="mb-4">Student Details</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Student Information</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-2">First Name</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.FName)</dd>
+
+                <dt class="col-sm-2">Middle Name</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.MName)</dd>
+
+                <dt class="col-sm-2">Last Name</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.LName)</dd>
+
+                <dt class="col-sm-2">Contact</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Contact)</dd>
+
+                <dt class="col-sm-2">Gender</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Gender)</dd>
+
+                <dt class="col-sm-2">Date of Birth</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.DOB)</dd>
+
+                <dt class="col-sm-2">Age</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Age)</dd>
+
+                <dt class="col-sm-2">Standard in Word</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.StanderdInWord)</dd>
+
+                <dt class="col-sm-2">Standard in Numeric</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.StanderdInNumeric)</dd>
+
+                <dt class="col-sm-2">Address</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Address)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="UpdateStudent" asp-route-id="@Model?.RollNo" class="btn btn-warning">Edit</a>
+        <a asp-action="StudentIndex" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

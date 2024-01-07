@@ -1,0 +1,133 @@
+﻿@model SRMS.Models.StudentModel
+
+@{
+    ViewData["Title"] = "UpdateStudent";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+
+
+<h1>Update Student</h1>
+
+<h4>Student Model</h4>
+<hr />
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <a asp-action="StudentIndex" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </div>
+            </div>
+        <div class="col-md-6">
+            <form asp-action="UpdateStudent" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="RollNo" />
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="FName" class="form-label">First Name</label>
+                        <input asp-for="FName" class="form-control" />
+                        <span asp-validation-for="FName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="MName" class="form-label">Middle Name</label>
+                        <input asp-for="MName" class="form-control" />
+                        <span asp-validation-for="MName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="LName" class="form-label">Last Name</label>
+                        <input asp-for="LName" class="form-control" />
+                        <span asp-validation-for="LName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Gender" class="form-label">Gender</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Male" />
+                            <label class="form-check-label">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Female" />
+                            <label class="form-check-label">Female</label>
+                        </div>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DOB" class="form-label">Date of Birth</label>
+                    <input asp-for="DOB" type="date" class="form-control" onclick=" calculateAge()" />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Age" class="form-label">Age</label>
+                    <input asp-for="Age" class="form-control" readonly />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Contact" class="form-label">Contact</label>
+                    <input asp-for="Contact" class="form-control" />
+                    <span asp-validation-for="Contact" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="StanderdInNumeric" class="form-label">Standard in Numeric</label>
+                    <input asp-for="StanderdInNumeric" class="form-control" />
+                    <span asp-validation-for="StanderdInNumeric" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="StanderdInWord" class="form-label">Standard in Word</label>
+                    <input asp-for="StanderdInWord" class="form-control" />
+                    <span asp-validation-for="StanderdInWord" class="text-danger"></span>
+                </div>
+
+               
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Address</label>
+                    <textarea asp-for="Address" class="form-control"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-warning w-100">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <a asp-action="StudentIndex" class="btn btn-secondary w-100">Back to List</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateAge() {
+            var dobElement = document.getElementById("dob");
+            var ageElement = document.getElementById("age");
+
+            if (dobElement && ageElement) {
+                var dob = new Date(dobElement.value);
+                var today = new Date();
+
+                var age = today.getFullYear() - dob.getFullYear();
+
+                // Adjust age if the birthday hasn't occurred yet this year
+                if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+
+                ageElement.value = age;
+            }
+        }
+    </script>
+</div>
+
+

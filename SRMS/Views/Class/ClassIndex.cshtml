@@ -1,0 +1,106 @@
+﻿@model IEnumerable<SRMS.Models.ClassModel>
+
+@{
+    ViewData["Title"] = "ClassIndex";
+}
+<h1>Class Index</h1>
+
+<h4>ClassModel</h4>
+<hr />
+<div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+        <div class="input-group" style="max-width:60%">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="search-icon">
+            <button class="btn btn-outline-secondary" type="button" id="search-icon">
+                <i class="fa-solid fa-search"></i>
+            </button>
+        </div>
+        <a asp-action="AddClass" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-plus"></i> Create New
+        </a>
+    </div>
+
+    <div style="max-height:100%;  overflow-y: auto;">
+        <table class="table table-hover">
+            <thead class="table-Faded">
+                <tr>
+                    <th class="col-1">Id</th>
+                    <th class="col-3">Class in words</th>
+                    <th class="col-2">Class in numerics</th>
+                    <th class="col-2">Sections</th>
+                    <th class="col-4"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr data-toggle="modal" data-target="#detailsModal">
+                        <td>
+                            <span class="content">@Html.DisplayFor(modelItem => item.Id)</span>
+                        </td>
+                        <td>
+                            <span class="content">@Html.DisplayFor(modelItem => item.ClassInWord)</span>
+                        </td>
+                        <td>
+                            <span class="content">@Html.DisplayFor(modelItem => item.ClassInNumeric)</span>
+                        </td>
+                        <td>
+                            <span class="content">@Html.DisplayFor(modelItem => item.Section)</span>
+                        </td>
+                        <td class="table-cell">
+                            <div class="actions">
+                                <a asp-action="UpdateClass" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-pen-to-square"></i> Update
+                                </a>
+                                <a asp-action="DeleteClass" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-eraser"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Class Details</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Content of the modal goes here -->
+                <!-- You can include details or additional information about the selected class -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Add Bootstrap 5 CDN or bundle references here if not already included -->
+    <style>
+        .table-cell {
+            position: relative;
+        }
+
+        .actions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .table-cell:hover .actions {
+            opacity: 1;
+        }
+    </style>
+}

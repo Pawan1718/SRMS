@@ -1,0 +1,49 @@
+﻿@* <!-- Views/Dashboard/Index.cshtml -->
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <h2 class="mt-5">Dashboard</h2>
+
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <p class="card-text">@Model.TotalStudents</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Subjects</h5>
+                    <p class="card-text">@Model.TotalSubjects</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Classes</h5>
+                    <p class="card-text">@Model.TotalClasses</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Results</h5>
+                    <p class="card-text">@Model.TotalResults</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ *@
